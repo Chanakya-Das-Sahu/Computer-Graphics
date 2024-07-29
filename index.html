@@ -1,43 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        html{
-            font-size:62.5%;
-        }
-        *{
-            padding:0;
-            margin:0;
-            box-sizing: border-box;
-        }
-        .container{
-          width: 120rem;
-          border:1px solid black;
-          margin:auto;
-          padding: 10px;
-          font-size: 2rem;
-        }
-        .container label{
-            font-weight:bold;
-        }
-        .container p{
-            display:inline-block;
+        html {
+            font-size: 62.5%;
         }
 
-        .container img{
-            margin:auto;
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 120rem;
+            /* border: 1px solid black; */
+            margin: auto;
+            padding: 10px;
+            font-size: 2rem;
+        }
+
+        .container div {
+            display: flex;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            margin-top: 5rem;
+            margin-bottom: 3rem;
+        }
+
+        .container label {
+            font-weight: bold;
+        }
+
+        .container p {
+            display: inline-block;
+        }
+
+        .container img {
+            margin: auto;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-      <label>Object : </label>
-      <p>Write a program to draw a line using DDA algorithm.</p><br>
-      <label>Source Code : </label><br>
-      <p>
+        <div>Program No. 1</div><br>
+        <label>Object : </label>
+        <p>Write a program to draw a line using DDA algorithm.</p><br>
+        <label>Source Code : </label><br>
+        <p>
         <pre>
         #include < stdio.h >
         #include < graphics.h >
@@ -85,8 +101,150 @@
         }
     </pre>
         </p><br>
-      <lable>Output : </lable><br>
-      <img src="./lineDDA.png" width="80%"/>
+        <lable>Output : </lable><br>
+        <img src="./lineDDA.png" width="80%" />
+        <br><br>
+
+        <!--  -->
+
+        <!-- <div></div>
+        <label>Object :</label>
+
+        <p></p>
+        <label>Source Code : </label><br>
+        <p>
+        <pre>
+
+        </pre>
+        </p><br>
+        <label>Output : </label><br><br>
+        <img src='/jlf' width="80%" /> -->
+
+        <!--  -->
+        <div>Program No. 2</div>
+        <label>Object :</label>
+        <p>Write a program to draw the line using Bresenham's algorithm</p><br>
+        <label>Source Code : </label><br>
+        <p>
+        <pre>
+        #include < stdio.h >
+        #include < conio.h >
+        #include < graphics.h >
+        void main()
+        {
+        int x,y,x1,y1,x2,y2,p,dx,dy;
+        int gd=DETECT,gm;
+        initgraph(&gd,&gm,"C:\\TurboC3\\BGI");
+        printf("\nEnter the x-coordinate of the first point ::");
+        scanf("%d",&x1);
+        printf("\nEnter the y-coordinate of the first point ::");
+        scanf("%d",&y1);
+        printf("\nEnter the x-coordinate of the second point ::");
+        scanf("%d",&x2);
+        printf("\nEnter the y-coordinate of the second point ::");
+        scanf("%d",&y2);
+        x=x1;
+        y=y1;
+        dx=x2-x1;
+        dy=y2-y1;
+        putpixel(x,y,2);
+        p=(2*dy-dx);
+        while(x<=x2)
+        {
+        if(p<0)
+         {
+        x=x+1;
+         p=p+2*dy;
+         }
+         else
+        {
+        x=x+1;
+        y=y+1;
+        p=p+(2*dy)-(2*dx);
+         }
+         putpixel(x,y,7);
+        }
+        getch();
+        closegraph();
+        }
+    </pre>
+        </p>
+        <label>Output :</label><br><br>
+        <img src='./lineBR.png' width="80%" />
+
+
+        <div>Program No. 3</div>
+        <label>Object :</label>
+        <p>Write a program to draw the circle using Bresenham's algorithm.</p><br>
+        <label>Source Code : </label><br>
+        <p>
+        <pre>
+            #include < dos.h >
+                #include < stdio.h >
+                #include < conio.h >
+                #include < graphics.h >
+                void draw_circle(int,int,int);
+                void symmetry(int,int,int,int);
+                void main()
+                {
+                int xc,yc,R;
+                int gd=DETECT,gm;
+                initgraph(&gd,&gm,"C:\\TurboC3\\BGI"); 
+                printf("Enter the center of the circle:\n");
+                printf("Xc =");
+                scanf("%d",&xc);
+                printf("Yc =");
+                scanf("%d",&yc);
+                printf("Enter the radius of the circle :");
+                scanf("%d",&R);
+                draw_circle(xc,yc,R);
+                getch();
+                closegraph();
+                }
+                void draw_circle(int xc,int yc,int rad)
+                {
+                int x = 0;
+                int y = rad;
+                int p = 1-rad;
+                symmetry(x,y,xc,yc);
+                for(x=0;y>x;x++)
+                 {
+                 if(p< 0)
+                 p += 2*x + 3;
+                 else
+                 {
+                 p += 2*(x-y) + 5;
+                 y--;
+                 }
+                 symmetry(x,y,xc,yc);
+                 delay(50);
+                 }
+                }
+                void symmetry(int x,int y,int xc,int yc)
+                {
+                putpixel(xc+x,yc-y,GREEN); //For pixel (x,y)
+                delay(50);
+                putpixel(xc+y,yc-x, GREEN); //For pixel (y,x)
+                delay(50);
+                putpixel(xc+y,yc+x, GREEN); //For pixel (y,-x)
+                delay(50);
+                putpixel(xc+x,yc+y, GREEN); //For pixel (x,-y)
+                delay(50);
+                putpixel(xc-x,yc+y, GREEN); //For pixel (-x,-y)
+                delay(50);
+                putpixel(xc-y,yc+x, GREEN); //For pixel (-y,-x)
+                delay(50);
+                putpixel(xc-y,yc-x, GREEN); //For pixel (-y,x)
+                delay(50);
+                putpixel(xc-x,yc-y, GREEN); //For pixel (-x,y)
+                delay(50);
+                }
+        </pre>
+        </p><br>
+        <label>Output : </label><br><br>
+        <img src='/cricleBR.png' width="80%" />
+
     </div>
 </body>
+
 </html>
