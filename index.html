@@ -107,7 +107,7 @@
 
         <!--  -->
 
-        <!-- <div></div>
+        <div></div>
         <label>Object :</label>
 
         <p></p>
@@ -118,7 +118,7 @@
         </pre>
         </p><br>
         <label>Output : </label><br><br>
-        <img src='/jlf' width="80%" /> -->
+        <img src='/jlf' width="80%" />
 
         <!--  -->
         <div>Program No. 2</div>
@@ -243,6 +243,81 @@
         </p><br>
         <label>Output : </label><br><br>
         <img src='/cricleBR.png' width="80%" />
+
+
+        <div>Program No. 4</div>
+        <label>Object :</label>
+
+        <p>Write a program to draw the circle using Mid Point algorithm.</p><br>
+        <label>Source Code : </label><br>
+        <p>
+        <pre>
+                #include < stdio.h >
+                #include < graphics.h >
+                
+                void midp(int r, int xc,int yc)
+                {
+                int x,y;
+                float d;
+                d=1.25-r;
+                x=0;
+                y=r;
+                do
+                {
+                if(d < 0)
+                 {
+                 x=x+1;
+                 d=d+2*x+1;
+                 }
+                else
+                 {
+                 x=x+1;
+                 y=y-1;
+                 d=d+2*x-2*y+10;
+                 }
+                putpixel(xc+x,yc+y,5);
+                putpixel(xc-y,yc-x,5);
+                putpixel(xc+y,yc-x,5);
+                putpixel(xc-y,yc+x,5);
+                putpixel(xc+y,yc+x,5);
+                putpixel(xc-x,yc-y,5);
+                putpixel(xc+x,yc-y,5);
+                putpixel(xc-x,yc+y,5);
+                }while(x < y);
+                }
+                
+                int main()
+                {
+                int gd=DETECT,gm;
+                int xc,yc,r;
+                printf("Enter center and radius");
+                scanf("%d%d%d",&xc,&yc,&r);
+                initgraph(&gd,&gm,"..\\BGI\\");
+                midp(r,xc,yc);
+                delay(1500);
+                getch();
+                closegraph();
+                return 0;
+                }
+        </pre>
+        </p><br>
+        <label>Output : </label><br><br>
+        <img src='circleMid.png' width="80%" />
+
+
+
+        <!-- <div>Program No. 5</div
+        <label>Object :</label>
+
+        <p>Write a program to draw ellipse using Mid Point algorithm.</p>
+        <label>Source Code : </label><br>
+        <p>
+        <pre>
+
+        </pre>
+        </p><br>
+        <label>Output : </label><br><br>
+        <img src='/circleMid.png' width="80%" /> -->
 
     </div>
 </body>
