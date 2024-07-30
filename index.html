@@ -63,7 +63,7 @@
         {
         int gd=DETECT,gm;
         // gd=graphics driver (detects best graphics driver and assigns it as default, gm=graphics 
-        mode.
+    
         int x1,y1,x2,y2,steps,k;
         float xincr,yincr,x,y,dx,dy;
         printf("enter x1,y1");
@@ -371,6 +371,57 @@
         <img src='./ellMid.png' width="80%" />
         
 
+        <div>Program No. 6 </div>
+        <label>Object :</label>
+
+        <p>Write a program for translation of a line.</p><br>
+        <label>Source Code : </label><br>
+        <p>
+        <pre>
+            #include < stdio.h >
+                #include < conio.h >
+                #include < graphics.h >
+                
+                void drawLine(int x1, int y1, int x2, int y2) {
+                    line(x1, y1, x2, y2);
+                }
+                
+                void translateLine(int x1, int y1, int x2, int y2, int tx, int ty) {
+                    int newX1 = x1 + tx;
+                    int newY1 = y1 + ty;
+                    int newX2 = x2 + tx;
+                    int newY2 = y2 + ty;
+                
+                    drawLine(newX1, newY1, newX2, newY2);
+                }
+                
+                void main() {
+                    int gd = DETECT, gm;
+                    int x1 , y1 , x2 , y2 , tx , ty;
+                    initgraph(&gd, &gm, "c:\\turboc3\\BGI");
+                
+                    printf("Enter starting coordinates of the line (x1, y1): ");
+                    scanf("%d %d", &x1, &y1);
+                
+                    printf("Enter ending coordinates of the line (x2, y2): ");
+                    scanf("%d %d", &x2, &y2);
+                
+                    printf("Enter translation factors (tx, ty): ");
+                    scanf("%d %d", &tx, &ty);
+                
+                    drawLine(x1, y1, x2, y2); // Draw original line
+                
+                    translateLine(x1, y1, x2, y2, tx, ty); // Draw translated line
+                
+                    getch();
+                    closegraph();
+                }
+                
+        </pre>
+        </p><br>
+        <label>Output : </label><br><br>
+        <img src='./lineTranslation.png' width="80%" />
+
         <div>Program No. 7</div>
         <label>Object :</label>
     
@@ -426,6 +477,7 @@
             </label><br><br>
         <img src='./Triangle2.png' width="80%" />
 
+        
     </div>
 </body>
 
