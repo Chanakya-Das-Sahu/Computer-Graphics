@@ -405,11 +405,13 @@
                 
                     printf("Enter ending coordinates of the line (x2, y2): ");
                     scanf("%d %d", &x2, &y2);
-                
+
+                    drawLine(x1, y1, x2, y2);
+                    
                     printf("Enter translation factors (tx, ty): ");
                     scanf("%d %d", &tx, &ty);
                 
-                    drawLine(x1, y1, x2, y2); // Draw original line
+            
                 
                     translateLine(x1, y1, x2, y2, tx, ty); // Draw translated line
                 
