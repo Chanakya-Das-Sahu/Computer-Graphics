@@ -105,22 +105,7 @@
         <img src="./lineDDA.png" width="80%" />
         <br><br>
 
-        <!--  -->
-
-        <div></div>
-        <label>Object :</label>
-
-        <p></p>
-        <label>Source Code : </label><br>
-        <p>
-        <pre>
-
-        </pre>
-        </p><br>
-        <label>Output : </label><br><br>
-        <img src='/jlf' width="80%" />
-
-        <!--  -->
+     
         <div>Program No. 2</div>
         <label>Object :</label>
         <p>Write a program to draw the line using Bresenham's algorithm</p><br>
@@ -309,7 +294,7 @@
         <div>Program No. 5</div>
         <label> Object :</label>
 
-        <p>Write a program to draw ellipse using Mid Point algorithm.</p>
+        <p>Write a program to draw ellipse using Mid Point algorithm.</p><br>
         <label>Source Code : </label><br>
         <p>
         <pre>
@@ -384,6 +369,62 @@
         </p><br>
         <label>Output : </label><br><br>
         <img src='./ellMid.png' width="80%" />
+        
+
+        <div>Program No. 7</div>
+        <label>Object :</label>
+    
+        <p>Write a program for rotation of a triangle.</p><br>
+        <label>Source Code : </label><br>
+        <p>
+        <pre>
+            #include < stdio.h >  
+            #include < graphics.h >  
+            #include < math.h >  
+            main()  
+            {  
+                int gd=0,gm,x1,y1,x2,y2,x3,y3;
+                double s,c, angle;  
+                initgraph(&gd, &gm, "C:\\TURBOC3\\BGI");  
+                setcolor(RED);  
+                printf("Enter coordinates of triangle: ");  
+                scanf("%d%d%d%d%d%d",&x1,&y1,&x2,&y2, &x3, &y3);  
+                setbkcolor(WHITE);  
+                cleardevice();  
+                line(x1,y1,x2,y2);  
+                line(x2,y2, x3,y3);  
+                line(x3, y3, x1, y1);  
+                getch();  
+                setbkcolor(BLACK);  
+                printf("Enter rotation angle: ");  
+                scanf("%lf", &angle);  
+                setbkcolor(WHITE);  
+                c = cos(angle *M_PI/180);  
+                s = sin(angle *M_PI/180);  
+                x1 = floor(x1 * c + y1 * s);  
+                y1 = floor(-x1 * s + y1 * c);  
+                x2 = floor(x2 * c + y2 * s);  
+                y2 = floor(-x2 * s + y2 * c);  
+                x3 = floor(x3 * c + y3 * s);  
+                y3 = floor(-x3 * s + y3 * c);  
+                cleardevice();  
+                line(x1, y1 ,x2, y2);  
+                line(x2,y2, x3,y3);  
+                line(x3, y3, x1, y1);  
+                getch();  
+                closegraph();  
+                return 0;  
+            }  
+        </pre>
+        </p><br>
+        <label>Output : <br>
+        Enter Co-Ordinates of Trinalge : 200 200 200 100 100 200
+        </label><br>
+        <img src='./Triangle1.png' width="80%" /><br>
+        <label>
+            Enter rotation angle : 10 
+            </label><br><br>
+        <img src='./Triangle2.png' width="80%" />
 
     </div>
 </body>
