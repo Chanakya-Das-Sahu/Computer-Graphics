@@ -62,7 +62,6 @@
         void main()
         {
         int gd=DETECT,gm;
-        // gd=graphics driver (detects best graphics driver and assigns it as default, gm=graphics 
     
         int x1,y1,x2,y2,steps,k;
         float xincr,yincr,x,y,dx,dy;
@@ -70,7 +69,7 @@
         scanf("%d%d",&x1,&y1);
         printf("enter x2,y2");
         scanf("%d%d",&x2,&y2);
-        initgraph(&gd,&gm,"c:\\turboc3\\BGI");//initializes the graph
+        initgraph(&gd,&gm,"c:\\turboc3\\BGI");
         dx=x2-x1;
         dy=y2-y1;
         if(abs(dx)>abs(dy))
@@ -83,16 +82,16 @@
         y=y1;
         for(k=1;k<=steps;k++)
         {
-        delay(100);//for seeing the line drawing process slowly.
+        delay(100);
         x+=xincr;
         y+=yincr;
         putpixel(round(x),round(y),WHITE);
         }
-        outtextxy(200,20,"DDA"); // for printing text at desired screen location.
+        outtextxy(200,20,"DDA");
         outtextxy(x1+5,y1-5,"(x1,y1)");
         outtextxy(x2+5,y2+5,"(x2,y2)");
         getch();
-        closegraph(); // closes the graph and comes back to previous graphic mode.
+        closegraph();
         }
         float round(float a)
         {
@@ -218,7 +217,6 @@
                 putpixel(xc-x,yc+y, GREEN); 
                 delay(50);
                 putpixel(xc-y,yc+x, GREEN); 
-
                 delay(50);
                 putpixel(xc-y,yc-x, GREEN); 
                 delay(50);
@@ -413,7 +411,7 @@
                 
             
                 
-                    translateLine(x1, y1, x2, y2, tx, ty); // Draw translated line
+                    translateLine(x1, y1, x2, y2, tx, ty); 
                 
                     getch();
                     closegraph();
