@@ -51,7 +51,7 @@
     <div class="container">
         <div>Program No. 1</div><br>
         <label>Object : </label>
-        <p>Write a program to draw a line using DDA algorithm.</p><br>
+        <p>Write a program to draw a line using DDA algorithm.</p><br><br/>
         <label>Source Code : </label><br>
         <p>
         <pre>
@@ -108,7 +108,7 @@
      
         <div>Program No. 2</div>
         <label>Object :</label>
-        <p>Write a program to draw the line using Bresenham's algorithm</p><br>
+        <p>Write a program to draw the line using Bresenham's algorithm</p><br><br/>
         <label>Source Code : </label><br>
         <p>
         <pre>
@@ -160,7 +160,7 @@
 
         <div>Program No. 3</div>
         <label>Object :</label>
-        <p>Write a program to draw the circle using Bresenham's algorithm.</p><br>
+        <p>Write a program to draw the circle using Bresenham's algorithm.</p><br><br/>
         <label>Source Code : </label><br>
         <p>
         <pre>
@@ -207,21 +207,22 @@
                 }
                 void symmetry(int x,int y,int xc,int yc)
                 {
-                putpixel(xc+x,yc-y,GREEN); //For pixel (x,y)
+                putpixel(xc+x,yc-y,GREEN); 
                 delay(50);
-                putpixel(xc+y,yc-x, GREEN); //For pixel (y,x)
+                putpixel(xc+y,yc-x, GREEN); 
                 delay(50);
-                putpixel(xc+y,yc+x, GREEN); //For pixel (y,-x)
+                putpixel(xc+y,yc+x, GREEN); 
                 delay(50);
-                putpixel(xc+x,yc+y, GREEN); //For pixel (x,-y)
+                putpixel(xc+x,yc+y, GREEN); 
                 delay(50);
-                putpixel(xc-x,yc+y, GREEN); //For pixel (-x,-y)
+                putpixel(xc-x,yc+y, GREEN); 
                 delay(50);
-                putpixel(xc-y,yc+x, GREEN); //For pixel (-y,-x)
+                putpixel(xc-y,yc+x, GREEN); 
+
                 delay(50);
-                putpixel(xc-y,yc-x, GREEN); //For pixel (-y,x)
+                putpixel(xc-y,yc-x, GREEN); 
                 delay(50);
-                putpixel(xc-x,yc-y, GREEN); //For pixel (-x,y)
+                putpixel(xc-x,yc-y, GREEN); 
                 delay(50);
                 }
         </pre>
@@ -233,7 +234,7 @@
         <div>Program No. 4</div>
         <label>Object :</label>
 
-        <p>Write a program to draw the circle using Mid Point algorithm.</p><br>
+        <p>Write a program to draw the circle using Mid Point algorithm.</p><br><br/>
         <label>Source Code : </label><br>
         <p>
         <pre>
@@ -282,7 +283,6 @@
                 delay(1500);
                 getch();
                 closegraph();
-                return 0;
                 }
         </pre>
         </p><br>
@@ -294,11 +294,11 @@
         <div>Program No. 5</div>
         <label> Object :</label>
 
-        <p>Write a program to draw ellipse using Mid Point algorithm.</p><br>
+        <p>Write a program to draw ellipse using Mid Point algorithm.</p><br><br/>
         <label>Source Code : </label><br>
         <p>
         <pre>
-            #include < stdio.h >
+                #include < stdio.h >
                 #include  < conio.h >
                 #include < graphics.h >
                 #include < math.h >
@@ -374,11 +374,11 @@
         <div>Program No. 6 </div>
         <label>Object :</label>
 
-        <p>Write a program for translation of a line.</p><br>
+        <p>Write a program for translation of a line.</p><br><br/>
         <label>Source Code : </label><br>
         <p>
         <pre>
-            #include < stdio.h >
+                #include < stdio.h >
                 #include < conio.h >
                 #include < graphics.h >
                 
@@ -427,14 +427,14 @@
         <div>Program No. 7</div>
         <label>Object :</label>
     
-        <p>Write a program for rotation of a triangle.</p><br>
+        <p>Write a program for rotation of a triangle.</p><br><br/>
         <label>Source Code : </label><br>
         <p>
         <pre>
             #include < stdio.h >  
             #include < graphics.h >  
             #include < math.h >  
-            main()  
+            void main()  
             {  
                 int gd=0,gm,x1,y1,x2,y2,x3,y3;
                 double s,c, angle;  
@@ -466,7 +466,7 @@
                 line(x3, y3, x1, y1);  
                 getch();  
                 closegraph();  
-                return 0;  
+                  
             }  
         </pre>
         </p><br>
@@ -480,7 +480,86 @@
         <img src='./Triangle2.png' width="80%" />
 
         
+        <div>Program No. 8</div>
+        <label>Object :</label>
+
+        <p>Write a program for scaling of a rectangle.</p><br><br/>
+        <label>Source Code : </label><br>
+        <p>
+        <pre>
+                #include < stdio.h >
+                #include < conio.h >
+                #include < graphics.h >
+                #include < process.h >
+                #include < math.h >
+                int x1, y1, x2, y2, x3, y3,x4,y4;
+                void draw();
+                void scale();
+                void main()
+                {
+                    int gd = DETECT, gm;
+                    int c;
+                     clrscr();
+                    initgraph(&gd, &gm, "c:\\turboc3\\BGI");
+                    printf("Enter the 1st point for the ractangle:");
+                    scanf("%d%d", &x1, &y1);
+                    printf("Enter the 2nd point for the ractangle:");
+                    scanf("%d%d", &x2, &y2);
+                    printf("Enter the 3rd point for the ractangle:");
+                    scanf("%d%d", &x3, &y3);
+                    printf("Enter the 4th point for the ractangle:");
+                    scanf("%d%d", &x4, &y4);
+                    draw();
+                   scale();
+                    }
+                
+                
+                
+                void draw()
+                {
+                  line(x1, y1, x2, y2);
+                  line(x2, y2, x3, y3);
+                   line(x3, y3, x4, y4);
+                    line(x4, y4, x1, y1);
+                    
+                }
+                void scale()
+                {
+                    int x, y;
+                    int mx, my;
+                      int a1, a2, a3,a4, b1, b2, b3,b4;
+                    printf("Enter the scaling factors (x y): ");
+                    scanf("%d%d", &x, &y);
+                    mx = (x1 + x2 + x3 + x4) / 4;
+                    my = (y1 + y2 + y3+y4) / 4;
+                    cleardevice();
+                
+                    a1 = mx + (x1 - mx) * x;
+                    b1 = my + (y1 - my) * y;
+                    a2 = mx + (x2 - mx) * x;
+                    b2 = my + (y2 - my) * y;
+                    a3 = mx + (x3 - mx) * x;
+                    b3 = my + (y3 - my) * y;
+                    a4 = mx + (x4 - mx) * x;
+                    b4 = my + (y4 - my) * y;
+                
+                    line(a1, b1, a2, b2);
+                    line(a2, b2, a3, b3);
+                    line(a3, b3, a4, b4);
+                     line(a4, b4, a1, b1);
+                    draw();
+                    getch();
+                }
+        </pre>
+        </p><br>
+        <label>Output : </label><br><br>
+        <img src='/ScalRac1.png' width="80%" /><br/><br/>
+        <img src='/ScalRac2.png' width="80%" />
+
     </div>
+
+
+    
 </body>
 
 </html>
