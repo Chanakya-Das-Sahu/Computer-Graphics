@@ -16,6 +16,10 @@
             box-sizing: border-box;
         }
 
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
         .container {
             width: 120rem;
             /* border: 1px solid black; */
@@ -44,18 +48,132 @@
         .container img {
             margin: auto;
         }
+
+        /* Login */
+
+
+        .login-container {
+            max-width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-container input,
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .login-container button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        .login-container button:hover {
+            background-color: #218838;
+        }
+
+        .container {
+            display: none;
+        }
     </style>
 </head>
 
 <body>
-  <br>
-    <h1>~ Developed By<h1>
-<h1>~ Chanakya Das Sahu & Chandani Sahu</h1>
+    <br>
+    <h2>~ Developed By :
+        Chanakya Das Sahu & Chandani Sahu</h2>
+    <h1 style="text-align: center;">Computer Graphics<br>Lab Mannual</h1>
+    <!-- Authentication  -->
+    <div class="login-container">
+        <h1>This is only developed for students of MSEIT , so before using this you need to verify yourself through your
+            ERP Login.</h1>
+        <br>
+        <input type="email" id="email" placeholder="Enter your email">
+        <input type="password" id="password" placeholder="Enter your password">
+        <h3 id="validate" style="font-size:13px;color:red;text-align:center;font-family:Segoe UI;display:none;">
+            Please Enter Email & Password Both...</h3>
+        <button onclick="handleValidation()" id="login-button">Login</button>
+        <button style="display: none;" id="loading"><img src="loading.gif" width="15px"></button>
+        <h3 id="invalid" style="font-size:13px;color:red;text-align:center;font-family:Segoe UI;display:none;">
+            Invalid
+            credentials</h3>
+    </div>
+
+    <script>
+
+        let validate = document.querySelector('#validate');
+        let email, password;
+
+        function handleLogin() {
+            const loginContainer = document.querySelector('.login-container');
+            const container = document.querySelector('.container');
+            const invalid = document.querySelector('#invalid');
+            const loading = document.querySelector('#loading');
+            const loginButton = document.querySelector('#login-button');
+            const requestBody = {
+                j_username: email,
+                j_password: password
+            };
+            // Create a new XMLHttpRequest object
+            const xhr = new XMLHttpRequest();
+            // const url = 'http://localhost:3000/login';
+            const url = 'https://era-login.vercel.app/login'
+            // Configure it: POST-request for the URL
+            xhr.open('POST', url, true);
+            loading.style.display = 'block';
+            loginButton.style.display = 'none';
+            xhr.setRequestHeader('Content-Type', 'application/json');
+
+            // Set up a callback to handle the response
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    
+                    loading.style.display = 'none';
+                    if (xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.msg === 'logged in') {
+                            container.style.display = 'block'; // Show the div if logged in
+                            loginContainer.style.display = 'none';
+                        } else if (response.alert = 'invalid credentials') {
+                            invalid.style.display = 'block';
+                            loginButton.style.display = 'block';
+                        }
+                        console.log('Login successful:', xhr.responseText);
+                    } else {
+                        console.error('Error during login:', xhr.status, xhr.statusText);
+                    }
+                }
+            };
+
+            // Send the request with the JSON payload
+            xhr.send(JSON.stringify(requestBody));
+
+        }
+        function handleValidation() {
+            email = document.getElementById('email').value;
+            password = document.getElementById('password').value;
+            if (email == '' || password == '') {
+                validate.style.display = 'block';
+            } else {
+                handleLogin();
+            }
+        }
+    </script>
+    <!-- Computer Graphics Content  -->
     <br>
     <div class="container">
         <div>Program No. 1</div><br>
         <label>Object : </label>
-        <p>Write a program to draw a line using DDA algorithm.</p><br><br/>
+        <p>Write a program to draw a line using DDA algorithm.</p><br><br />
         <label>Source Code : </label><br>
         <p>
         <pre>
@@ -108,10 +226,10 @@
         <img src="./lineDDA.png" width="80%" />
         <br><br>
 
-     
+
         <div>Program No. 2</div>
         <label>Object :</label>
-        <p>Write a program to draw the line using Bresenham's algorithm</p><br><br/>
+        <p>Write a program to draw the line using Bresenham's algorithm</p><br><br />
         <label>Source Code : </label><br>
         <p>
         <pre>
@@ -163,7 +281,7 @@
 
         <div>Program No. 3</div>
         <label>Object :</label>
-        <p>Write a program to draw the circle using Bresenham's algorithm.</p><br><br/>
+        <p>Write a program to draw the circle using Bresenham's algorithm.</p><br><br />
         <label>Source Code : </label><br>
         <p>
         <pre>
@@ -236,7 +354,7 @@
         <div>Program No. 4</div>
         <label>Object :</label>
 
-        <p>Write a program to draw the circle using Mid Point algorithm.</p><br><br/>
+        <p>Write a program to draw the circle using Mid Point algorithm.</p><br><br />
         <label>Source Code : </label><br>
         <p>
         <pre>
@@ -296,7 +414,7 @@
         <div>Program No. 5</div>
         <label> Object :</label>
 
-        <p>Write a program to draw ellipse using Mid Point algorithm.</p><br><br/>
+        <p>Write a program to draw ellipse using Mid Point algorithm.</p><br><br />
         <label>Source Code : </label><br>
         <p>
         <pre>
@@ -371,12 +489,12 @@
         </p><br>
         <label>Output : </label><br><br>
         <img src='./ellMid.png' width="80%" />
-        
+
 
         <div>Program No. 6 </div>
         <label>Object :</label>
 
-        <p>Write a program for translation of a line.</p><br><br/>
+        <p>Write a program for translation of a line.</p><br><br />
         <label>Source Code : </label><br>
         <p>
         <pre>
@@ -428,8 +546,8 @@
 
         <div>Program No. 7</div>
         <label>Object :</label>
-    
-        <p>Write a program for rotation of a triangle.</p><br><br/>
+
+        <p>Write a program for rotation of a triangle.</p><br><br />
         <label>Source Code : </label><br>
         <p>
         <pre>
@@ -473,19 +591,19 @@
         </pre>
         </p><br>
         <label>Output : <br>
-        Enter Co-Ordinates of Trinalge : 200 200 200 100 100 200
+            Enter Co-Ordinates of Trinalge : 200 200 200 100 100 200
         </label><br>
         <img src='./Triangle1.png' width="80%" /><br>
         <label>
-            Enter rotation angle : 10 
-            </label><br><br>
+            Enter rotation angle : 10
+        </label><br><br>
         <img src='./Triangle2.png' width="80%" />
 
-        
+
         <div>Program No. 8</div>
         <label>Object :</label>
 
-        <p>Write a program for scaling of a rectangle.</p><br><br/>
+        <p>Write a program for scaling of a rectangle.</p><br><br />
         <label>Source Code : </label><br>
         <p>
         <pre>
@@ -555,13 +673,13 @@
         </pre>
         </p><br>
         <label>Output : </label><br><br>
-        <img src='/ScalRac1.png' width="80%" /><br/><br/>
+        <img src='/ScalRac1.png' width="80%" /><br /><br />
         <img src='/ScalRac2.png' width="80%" />
 
     </div>
 
 
-    
+
 </body>
 
 </html>
